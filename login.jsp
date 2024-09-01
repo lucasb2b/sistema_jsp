@@ -15,18 +15,38 @@
 </head>
 
 <body bgcolor="#FFF66">
+
+<% 
+	try
+	{
+		// 1 - Carregar o driver
+		Class.forName("org.postgresql.Driver");
+		out.println("Conseguiu carregar o driver");
+	}
+	catch(ClassNotFoundException erroClass)
+	{
+		out.println("Classe Driver JDBC não foi localizado, erro: " + erroClass);
+	}
+	/*catch(SQLException erroSQL)
+	{
+		out.println("Erro de conexão com o Banco de Dados, erro: " + erroClass);
+	}*/
+
+
+%>
+
 <p>&nbsp;</p>
 <p align="center"><img src="imagens/logo_info.jpg" width="484" height="150" /></p>
 <form id="form1" name="form1" method="post" action="">
-  <table width="208" border="1" align="center" cellpadding="1" cellspacing="1">
+  <table width="208" border="1" align="center">
     <tr>
       <td colspan="2"><div align="center" class="style1">ACESSO AO SISTEMA</div></td>
     </tr>
     <tr>
-      <td width="93">Usuário</td>
+      <td>Usuário</td>
       <td><label>
         <div align="center">
-          <input name="usuario" type="text" id="usuario" size="10" />
+          <input name="usuario" type="text" id="usuario" size="8" />
           </div>
       </label></td>
     </tr>
