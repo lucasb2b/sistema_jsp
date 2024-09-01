@@ -27,7 +27,8 @@
 			ResultSet rs = st.executeQuery(sql);
 		
 				if(rs.next()){
-					out.println("Bem vindo ao sistema!");
+					response.sendRedirect("index.jsp");
+
 				}else{
 					out.println("Você não tem acesso ao sistema!");
 				}
