@@ -15,32 +15,37 @@
 </head>
 
 <body bgcolor="#FFF66">
-
-<% 
+<p>
+  <% 
 	try
 	{
-		Class.forName("org.postgresql.Driver");
-		Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/aula_neri", "postgres", "admin");
-		Statement st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
-		ResultSet rs = st.executeQuery("SELECT * FROM login");
-		rs.first();
-		out.println("Usuario = " + rs.getString("log_usuario"));
+		if(request.getParameter("usuario") != null){
+			Class.forName("org.postgresql.Driver");
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/aula_neri", "postgres", "admin");
+			Statement st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			String sql = "SELECT * FROM login WHERE log_usuario ='" + request.getParameter("usuario")+"' and log_senha = '" + request.getParameter("senha")+"'";
+			ResultSet rs = st.executeQuery(sql);
 		
+				if(rs.next()){
+					out.println("Bem vindo ao sistema!");
+				}else{
+					out.println("Você não tem acesso ao sistema!");
+				}
+		}
 		
-	}
-	catch(ClassNotFoundException erroClass)
-	{
-		out.println("Classe Driver JDBC não foi localizado, erro: " + erroClass);
-	}
-	catch(SQLException erroSQL)
-	{
-		out.println("Erro de conexão com o Banco de Dados, erro: " + erroSQL);
-	}
+			}
+			catch(ClassNotFoundException erroClass)
+			{
+				out.println("Classe Driver JDBC não foi localizado, erro: " + erroClass);
+			}
+			catch(SQLException erroSQL)
+			{
+				out.println("Erro de conexão com o Banco de Dados, erro: " + erroSQL);
+			}
 
 
 %>
-
-<p>&nbsp;</p>
+</p>
 <p align="center"><img src="imagens/logo_info.jpg" width="484" height="150" /></p>
 <form id="form1" name="form1" method="post" action="">
   <table width="208" border="1" align="center">
