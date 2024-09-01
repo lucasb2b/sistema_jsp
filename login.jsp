@@ -19,13 +19,14 @@
 <% 
 	try
 	{
-		// 1 - Carregar o driver
 		Class.forName("org.postgresql.Driver");
-		//out.println("Conseguiu carregar o driver");
-		
-		
 		Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/aula_neri", "postgres", "admin");
-		//out.println("Conectado com sucesso");
+		Statement st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+		ResultSet rs = st.executeQuery("SELECT * FROM login");
+		rs.first();
+		out.println("Usuario = " + rs.getString("log_usuario"));
+		
+		
 	}
 	catch(ClassNotFoundException erroClass)
 	{
