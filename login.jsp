@@ -21,16 +21,20 @@
 	{
 		// 1 - Carregar o driver
 		Class.forName("org.postgresql.Driver");
-		out.println("Conseguiu carregar o driver");
+		//out.println("Conseguiu carregar o driver");
+		
+		
+		Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/aula_neri", "postgres", "admin");
+		//out.println("Conectado com sucesso");
 	}
 	catch(ClassNotFoundException erroClass)
 	{
 		out.println("Classe Driver JDBC não foi localizado, erro: " + erroClass);
 	}
-	/*catch(SQLException erroSQL)
+	catch(SQLException erroSQL)
 	{
-		out.println("Erro de conexão com o Banco de Dados, erro: " + erroClass);
-	}*/
+		out.println("Erro de conexão com o Banco de Dados, erro: " + erroSQL);
+	}
 
 
 %>
