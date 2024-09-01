@@ -12,7 +12,6 @@ body {
 </style></head>
 
 <body>
-<div align="center"><img src="imagens/logo_info.jpg" width="318" height="62" />
-</div>
+<div align="center"><img src="imagens/logo_info.jpg" width="363" height="64" /></div>
 </body>
 </html>

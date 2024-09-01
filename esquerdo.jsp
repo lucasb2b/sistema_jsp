@@ -13,20 +13,22 @@ body {
 	font-weight: bold;
 	font-size: 24px;
 }
-.style2 {color: #FF0000}
-.style3 {color: #FF0000; font-weight: bold; }
+.style4 {
+	color: #FF0000;
+	font-weight: bold;
+}
 -->
 </style></head>
 
 <body>
 <div align="center" class="style1">Menus</div>
-<p class="style2"><strong>Bairros</strong></p>
-<p class="style2"><strong>Cidades</strong></p>
-<p class="style2"><strong>Endere&ccedil;os</strong></p>
-<p class="style2"><strong>Cargos</strong></p>
-<p class="style2"><strong>Clientes</strong></p>
-<p class="style2"><strong>Funcion&aacute;rios</strong></p>
-<p class="style3">Login</p>
-<p class="style3">Produtos</p>
+<p class="style4">Bairros</p>
+<p class="style4">Cidades</p>
+<p class="style4">Endere&ccedil;os</p>
+<p class="style4">Cargos</p>
+<p class="style4">Clientes</p>
+<p class="style4">Funcion&aacute;rios</p>
+<p class="style4"><a href="usuario.jsp" target="mainFrame">Usu&aacute;rios</a></p>
+<p class="style4">Produtos</p>
 </body>
 </html>
