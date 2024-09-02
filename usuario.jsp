@@ -11,33 +11,34 @@
 	font-weight: bold;
 	font-size: 24px;
 }
+.style2 {
+	font-size: 14px;
+	color: #0000FF;
+}
+.style3 {color: #FF0000}
 -->
 </style>
 </head>
 
 <body>
 <p align="center" class="style1">Manuten&ccedil;&atilde;o de Usu&aacute;rios</p>
-<form id="form1" name="form1" method="post" action="">
-  <label>
-  <input type="submit" name="novo" id="novo" value="Novo Registro" />
-  </label>
-</form>
-<table width="561" border="1">
+<p align="center" class="style1"><img src="imagens/cadastrar.jpg" width="128" height="34" /> <span class="style2">Crescente - Decrescente</span></p>
+<table width="561" border="1" align="center">
   <tr>
-    <td width="58"><div align="center">C&oacute;digo</div></td>
-    <td width="147"><div align="center">Nome do Usu&aacute;rio</div></td>
-    <td width="77"><div align="center">Senha</div></td>
-    <td width="104"><div align="center">N&iacute;vel de acesso</div></td>
-    <td width="60"><div align="center">Alterar</div></td>
-    <td width="75"><div align="center">Excluir</div></td>
+    <td width="58"><div align="center" class="style3">C&oacute;digo</div></td>
+    <td width="147"><div align="center" class="style3">Nome do Usu&aacute;rio</div></td>
+    <td width="77"><div align="center" class="style3">Senha</div></td>
+    <td width="104"><div align="center" class="style3">N&iacute;vel de acesso</div></td>
+    <td width="60"><div align="center" class="style3">Alterar</div></td>
+    <td width="75"><div align="center" class="style3">Excluir</div></td>
   </tr>
   <tr>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
     <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
+    <td><div align="center"><img src="imagens/edit.png" width="24" height="24" /></div></td>
+    <td><div align="center"><img src="imagens/delete.png" width="24" height="24" /></div></td>
   </tr>
 </table>
 <p>&nbsp;</p>
