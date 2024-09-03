@@ -15,31 +15,55 @@
 	font-size: 14px;
 	color: #0000FF;
 }
-.style3 {color: #FF0000}
+.style4 {color: #FF0000; font-weight: bold; }
 -->
 </style>
 </head>
 
 <body>
+
 <p align="center" class="style1">Manuten&ccedil;&atilde;o de Usu&aacute;rios</p>
-<p align="center" class="style1"><img src="imagens/cadastrar.jpg" width="128" height="34" /> <span class="style2">Crescente - Decrescente</span></p>
+<p align="center" class="style1"><img src="imagens/cadastrar.jpg" width="128" height="34" />  <img src="imagens/print.png" width="32" height="32" /></p>
+<p align="center" class="style1"><span class="style2">Ordena&ccedil;&atilde;o: Crescente - Decrescente</span></p>
 <table width="561" border="1" align="center">
   <tr>
-    <td width="58"><div align="center" class="style3">C&oacute;digo</div></td>
-    <td width="147"><div align="center" class="style3">Nome do Usu&aacute;rio</div></td>
-    <td width="77"><div align="center" class="style3">Senha</div></td>
-    <td width="104"><div align="center" class="style3">N&iacute;vel de acesso</div></td>
-    <td width="60"><div align="center" class="style3">Alterar</div></td>
-    <td width="75"><div align="center" class="style3">Excluir</div></td>
+    <td width="58" bgcolor="#FFFF00"><div align="center" class="style4">C&oacute;digo</div></td>
+    <td width="147" bgcolor="#FFFF00"><div align="center" class="style4">Nome do Usu&aacute;rio</div></td>
+    <td width="77" bgcolor="#FFFF00"><div align="center" class="style4">Senha</div></td>
+    <td width="104" bgcolor="#FFFF00"><div align="center" class="style4">N&iacute;vel</div></td>
+    <td width="60" bgcolor="#FFFF00"><div align="center" class="style4">Alterar</div></td>
+    <td width="75" bgcolor="#FFFF00"><div align="center" class="style4">Excluir</div></td>
   </tr>
-  <tr>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td>&nbsp;</td>
-    <td><div align="center"><img src="imagens/edit.png" width="24" height="24" /></div></td>
-    <td><div align="center"><img src="imagens/delete.png" width="24" height="24" /></div></td>
-  </tr>
+  <% 
+	try
+	{
+			Class.forName("org.postgresql.Driver");
+			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/aula_neri", "postgres", "admin");
+			Statement st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			String sql = "SELECT * FROM login";
+			ResultSet rs = st.executeQuery(sql);
+			
+			while(rs.next())
+			{%>
+            
+              <tr>
+                <td bgcolor="#CCFFCC"><div align="center"><%= rs.getString("log_codigo") %></div></td>
+                <td bgcolor="#CCFFCC"><%= rs.getString("log_usuario") %></td>
+                <td bgcolor="#CCFFCC"><div align="center"><%= rs.getString("log_senha") %></div></td>
+                <td bgcolor="#CCFFCC"><div align="center"><%= rs.getString("log_nivelacesso") %></div></td>
+                <td bgcolor="#CCFFCC"><div align="center"><img src="imagens/edit.png" width="24" height="24" /></div></td>
+                <td bgcolor="#CCFFCC"><div align="center"><img src="imagens/delete.png" width="24" height="24" /></div></td>
+              </tr>
+<%  			}}
+			catch(ClassNotFoundException erroClass)
+			{
+				out.println("Classe Driver JDBC não foi localizado, erro: " + erroClass);
+			}
+			catch(SQLException erroSQL)
+			{
+				out.println("Erro de conexão com o Banco de Dados, erro: " + erroSQL);
+			}
+%>
 </table>
 <p>&nbsp;</p>
 </body>
