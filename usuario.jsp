@@ -40,6 +40,11 @@
 			Class.forName("org.postgresql.Driver");
 			Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/aula_neri", "postgres", "admin");
 			Statement st = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			
+			if (request.getParameter("acao") != null){
+				st.executeUpdate("DELETE FROM login WHERE log_codigo = " + request.getParameter("codigo"));
+			
+			}
 			String sql = "SELECT * FROM login";
 			ResultSet rs = st.executeQuery(sql);
 			
@@ -52,7 +57,7 @@
                 <td bgcolor="#CCFFCC"><div align="center"><%= rs.getString("log_senha") %></div></td>
                 <td bgcolor="#CCFFCC"><div align="center"><%= rs.getString("log_nivelacesso") %></div></td>
                 <td bgcolor="#CCFFCC"><div align="center"><img src="imagens/edit.png" width="24" height="24" /></div></td>
-                <td bgcolor="#CCFFCC"><div align="center"><img src="imagens/delete.png" width="24" height="24" /></div></td>
+                <td bgcolor="#CCFFCC"><div align="center"><a href="usuario.jsp?acao=excluir&amp;codigo=<%= rs.getString("log_codigo") %>"><img src="imagens/delete.png" width="24" height="24" /></a></div></td>
               </tr>
 <%  			}}
 			catch(ClassNotFoundException erroClass)
