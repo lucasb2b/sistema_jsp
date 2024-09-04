@@ -24,7 +24,7 @@
 
 <p align="center" class="style1">Manuten&ccedil;&atilde;o de Usu&aacute;rios</p>
 <p align="center" class="style1"><img src="imagens/cadastrar.jpg" width="128" height="34" />  <img src="imagens/print.png" width="32" height="32" /></p>
-<p align="center" class="style1"><span class="style2">Ordena&ccedil;&atilde;o: <a href="usuario.jsp?ordenacao=crescente">Crescente</a> - Decrescente</span></p>
+<p align="center" class="style1"><span class="style2">Ordena&ccedil;&atilde;o: <a href="usuario.jsp?ordenacao=crescente">C&oacute;digo</a> - <a href="usuario.jsp?ordenacao=alfabetica">Alfab&eacute;tica</a></span></p>
 <table width="561" border="1" align="center">
   <tr>
     <td width="58" bgcolor="#FFFF00"><div align="center" class="style4">C&oacute;digo</div></td>
@@ -49,9 +49,12 @@
 			ResultSet rs = null;
 			
 			if(request.getParameter("ordenacao") == null){
-				String sql = "SELECT * FROM login";
+				String sql = "SELECT * FROM login ORDER BY log_usuario";
 				rs = st.executeQuery(sql);
 			} else if(request.getParameter("ordenacao").equals("crescente")) {
+				String sql = "SELECT * FROM login";
+				rs = st.executeQuery(sql);
+			} else if(request.getParameter("ordenacao").equals("alfabetica")) {
 				String sql = "SELECT * FROM login ORDER BY log_usuario";
 				rs = st.executeQuery(sql);
 			}
