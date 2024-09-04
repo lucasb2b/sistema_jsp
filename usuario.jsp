@@ -23,7 +23,7 @@
 <body>
 
 <p align="center" class="style1">Manuten&ccedil;&atilde;o de Usu&aacute;rios</p>
-<p align="center" class="style1"><img src="imagens/cadastrar.jpg" width="128" height="34" />  <img src="imagens/print.png" width="32" height="32" /></p>
+<p align="center" class="style1"><a href="cadUsuario.jsp"><img src="imagens/cadastrar.jpg" width="128" height="34" /></a>  <img src="imagens/print.png" width="32" height="32" /></p>
 <p align="center" class="style1"><span class="style2">Ordena&ccedil;&atilde;o: <a href="usuario.jsp?ordenacao=crescente">C&oacute;digo</a> - <a href="usuario.jsp?ordenacao=alfabetica">Alfab&eacute;tica</a></span></p>
 <table width="561" border="1" align="center">
   <tr>
