@@ -22,7 +22,7 @@
 
     <form id="frmInserirUsuario" name="frmInserirUsuario" method="post" action="cadUsuario.jsp?acao=gravar">
       <label>Código.:
-      <input name="tf_codigo" type="text" id="tf_codigo" size="10" maxlength="6" />
+      <input name="tf_codigo" type="text" id="tf_codigo" size="10" maxlength="6" readonly="readonly" style="cursor:not-allowed"/>
       </label>
       <p>
         <label>Nome Usuário.:
@@ -48,7 +48,7 @@
     </form>
 <% } else{
 		
-		if((request.getParameter("tf_usuario").length() <= 0) || (request.getParameter("tf_codigo").length() <= 0) || (request.getParameter("tf_senha").length() <= 0) || (request.getParameter("tf_nivelacesso").length() <= 0)){
+		if((request.getParameter("tf_usuario").length() <= 0) || (request.getParameter("tf_senha").length() <= 0) || (request.getParameter("tf_nivelacesso").length() <= 0)){
 			out.println("Atenção, você deve digitar o nome do usuário");
 			response.sendRedirect("cadUsuario.jsp");
 		}else{
@@ -57,17 +57,15 @@
 				Class.forName("org.postgresql.Driver");
 				Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/aula_neri", "postgres", "admin");
 				
-				int codigo = Integer.parseInt(request.getParameter("tf_codigo"));
 				String usuario = request.getParameter("tf_usuario");
 				String senha = request.getParameter("tf_senha");
 				int nivelAcesso = Integer.parseInt(request.getParameter("tf_nivelacesso"));
 				
-				PreparedStatement pstmt = con.prepareStatement("INSERT INTO login (log_codigo, log_usuario, log_senha, log_nivelacesso) VALUES (?, ?, ?, ?)");
+				PreparedStatement pstmt = con.prepareStatement("INSERT INTO login ( log_usuario, log_senha, log_nivelacesso) VALUES (?, ?, ?)");
 							
-				pstmt.setInt(1, codigo);
-				pstmt.setString(2, usuario);
-				pstmt.setString(3, senha);
-				pstmt.setInt(4, nivelAcesso);
+				pstmt.setString(1, usuario);
+				pstmt.setString(2, senha);
+				pstmt.setInt(3, nivelAcesso);
 				
 				pstmt.executeUpdate();
 				pstmt.close();
