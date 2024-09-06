@@ -16,30 +16,30 @@
 </head>
 
 <body>
-<h1 style="color: red; text-align:center">Cadastro de Usu&aacute;rios</h1>
+<h1 style="color: red; text-align:center">Altera&ccedil;&atilde;o de Usu&aacute;rios</h1>
 
 <% if(request.getParameter("acao") == null) { %>
 
-    <form id="frmInserirUsuario" name="frmInserirUsuario" method="post" action="cadUsuario.jsp?acao=gravar">
+    <form id="frmInserirUsuario" name="frmInserirUsuario" method="post" action="alteraUsuario.jsp?acao=alterar">
       <label>Código.:
-      <input name="tf_codigo" type="text" id="tf_codigo" size="10" maxlength="6" disabled="disabled" style="cursor:not-allowed" value="Automático"/>
+      <input name="tf_codigo" type="text" id="tf_codigo" size="10" maxlength="6" style="cursor:not-allowed" value="<%= request.getParameter("codigo") %>"/>
       </label>
       <p>
         <label>Nome Usuário.:
-        <input name="tf_usuario" type="text" id="tf_usuario" size="15" maxlength="10" />
+        <input name="tf_usuario" type="text" id="tf_usuario" value="<%= request.getParameter("usuario") %>" size="15" maxlength="10" />
         </label>
         <label>Senha.:
-        <input name="tf_senha" type="password" id="tf_senha" size="15" maxlength="10" />
+        <input name="tf_senha" type="password" id="tf_senha" value="<%= request.getParameter("senha") %>" size="15" maxlength="10" />
         </label>
       </p>
       <p>
         <label>Nível Acesso.:
-        <input name="tf_nivelacesso" type="text" id="tf_nivelacesso" size="3" maxlength="1" />
+        <input name="tf_nivelacesso" type="text" id="tf_nivelacesso" value="<%= request.getParameter("nivelacesso") %>" size="3" maxlength="1" />
         </label>
       </p>
       <p>
         <label>
-        <input type="submit" name="gravar" id="gravar" value="Gravar" />
+        <input type="submit" name="gravar" id="gravar" value="Confirmar Altera&ccedil;&atilde;o" />
         </label>
         <label>
         <input type="reset" name="limpar" id="limpar" value="Limpar" />
@@ -57,17 +57,20 @@
 				Class.forName("org.postgresql.Driver");
 				Connection con = DriverManager.getConnection("jdbc:postgresql://localhost/aula_neri", "postgres", "admin");
 				
+				
+				int codigo = Integer.parseInt(request.getParameter("tf_codigo"));
 				String usuario = request.getParameter("tf_usuario");
 				String senha = request.getParameter("tf_senha");
 				int nivelAcesso = Integer.parseInt(request.getParameter("tf_nivelacesso"));
 				
-				PreparedStatement pstmt = con.prepareStatement("INSERT INTO login ( log_usuario, log_senha, log_nivelacesso) VALUES (?, ?, ?)");
+				PreparedStatement pstmt = con.prepareStatement("UPDATE login SET log_usuario=?, log_senha=?, log_nivelacesso=? WHERE log_codigo=?");
 							
 				pstmt.setString(1, usuario);
 				pstmt.setString(2, senha);
 				pstmt.setInt(3, nivelAcesso);
+				pstmt.setInt(4, codigo);
 				
-				pstmt.executeUpdate();
+				pstmt.execute();
 				pstmt.close();
 				
 				response.sendRedirect("usuario.jsp");

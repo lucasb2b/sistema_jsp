@@ -68,7 +68,7 @@
                 <td bgcolor="#CCFFCC"><%= rs.getString("log_usuario") %></td>
                 <td bgcolor="#CCFFCC"><div align="center"><%= rs.getString("log_senha") %></div></td>
                 <td bgcolor="#CCFFCC"><div align="center"><%= rs.getString("log_nivelacesso") %></div></td>
-                <td bgcolor="#CCFFCC"><div align="center"><img src="imagens/edit.png" width="24" height="24" /></div></td>
+                <td bgcolor="#CCFFCC"><div align="center"><a href="alteraUsuario.jsp?codigo=<%=rs.getString("log_codigo")%>&usuario=<%=rs.getString("log_usuario")%>&senha=<%=rs.getString("log_senha")%>&nivelacesso=<%=rs.getString("log_nivelacesso")%>"><img src="imagens/edit.png" width="24" height="24" /></a></div></td>
                 <td bgcolor="#CCFFCC"><div align="center"><a href="usuario.jsp?acao=excluir&amp;codigo=<%= rs.getString("log_codigo") %>"><img src="imagens/delete.png" width="24" height="24" /></a></div></td>
               </tr>
 <%  			}}
